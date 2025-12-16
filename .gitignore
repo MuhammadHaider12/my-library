@@ -1,0 +1,38 @@
+# ======================
+# ESSENTIAL IGNORES
+# ======================
+
+# Environment files (MUST IGNORE!)
+.env
+.env.local
+
+# Node modules
+node_modules/
+Backend/node_modules/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.code-workspace
+tempCodeRunnerFile.js  # Your specific file
+
+# Logs
+*.log
+npm-debug.log*
+
+# Database files (temporary)
+*.db
+*.sqlite
+
+# ======================
+# KEEP THESE (DON'T IGNORE)
+# ======================
+!database/              # Keep your SQL files
+!Frontend/              # Keep HTML files
+!Backend/               # Keep server code
+!railway.json          # Keep deployment config
+!.env.example          # Keep template
