@@ -1,5 +1,6 @@
-create database if not exists library;
-use library;
+create database if not exists railway;
+use railway;
+
 CREATE TABLE books (
     book_id VARCHAR(20) PRIMARY KEY,
     title VARCHAR(150) NOT NULL,
