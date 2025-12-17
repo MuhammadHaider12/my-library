@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE = 'http://localhost:3000';
+    const API_BASE = 'https://my-library-production.up.railway.app';
 
     // Animate number counting up
     function animateValue(element, start, end, duration) {
