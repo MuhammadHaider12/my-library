@@ -301,28 +301,28 @@ app.post('/admin/login', async (req, res) => {
 });
 
 // --- Admin Registration (done by existing logged-in admin) ---
-app.get('/create-admin-temp', async (req, res) => {
-    const username = 'haider';
-    const password = 'haider123';
+// app.get('/create-admin-temp', async (req, res) => {
+//     const username = 'haider';
+//     const password = 'haider123';
 
-    const hash = await bcrypt.hash(password, 10);
+//     const hash = await bcrypt.hash(password, 10);
 
-    await pool.execute(
-        'DELETE FROM admins WHERE username = ?',
-        [username]
-    );
+//     await pool.execute(
+//         'DELETE FROM admins WHERE username = ?',
+//         [username]
+//     );
 
-    await pool.execute(
-        'INSERT INTO admins (username, password_hash) VALUES (?, ?)',
-        [username, hash]
-    );
+//     await pool.execute(
+//         'INSERT INTO admins (username, password_hash) VALUES (?, ?)',
+//         [username, hash]
+//     );
 
-    res.send({
-        username,
-        password,
-        hash
-    });
-});
+//     res.send({
+//         username,
+//         password,
+//         hash
+//     });
+// });
 
 // Expects: { username, password }
 app.post('/admin/register', async (req, res) => {
