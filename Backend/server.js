@@ -1,38 +1,40 @@
 const express = require('express');
 const mysql = require('mysql2/promise');
 const cors = require('cors');
-const bcrypt = require('bcrypt');
 const path = require('path');
-// --- Database Connection Pool ---
-
-
-// Explicitly load env file from project root so it works regardless of cwd
-const envPath = path.resolve(__dirname, '.env');
-require('dotenv').config({ path: envPath });
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+app.use(cors());
+app.use(express.json());
 
-// --- Database Connection Pool ---
-// Require critical DB env vars up front to avoid silent fallbacks
-function requireEnv(name) {
-    const value = process.env[name];
-    if (!value) {
-        throw new Error(`Missing required environment variable: ${name}`);
-    }
-    return value;
-}
+const DATABASE_URL = process.env.DATABASE_URL || 'mysql://root:ySbSyJVQXxVSqQPHlSuXPpbUjohSpPtd@centerbeam.proxy.rlwy.net:53126/railway';
+
+const url = new URL(DATABASE_URL);
 
 const pool = mysql.createPool({
-    host: process.env.DB_HOST || process.env.MYSQLHOST || requireEnv('DB_HOST'),
-    user: process.env.DB_USER || process.env.MYSQLUSER || requireEnv('DB_USER'),
-    password: process.env.DB_PASSWORD || process.env.MYSQLPASSWORD || requireEnv('DB_PASSWORD'),
-    database: process.env.DB_NAME || process.env.MYSQLDATABASE || requireEnv('DB_NAME'),
-    port: process.env.DB_PORT || process.env.MYSQLPORT || 3306,
-    waitForConnections: true,
-    connectionLimit: parseInt(process.env.DB_CONNECTION_LIMIT) || 10,
-    queueLimit: 0
+  host: url.hostname,
+  user: url.username,
+  password: url.password,
+  database: url.pathname.replace('/', ''),
+  port: url.port,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
 });
+
+// Test connection
+(async () => {
+  try {
+    const connection = await pool.getConnection();
+    console.log('✅ Connected to Railway MySQL successfully!');
+    connection.release();
+  } catch (err) {
+    console.error('❌ DB connection error:', err);
+  }
+})();
+
+const bcrypt = require('bcrypt');
 
 // --- Middleware ---
 app.use(cors({
