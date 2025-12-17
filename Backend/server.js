@@ -7,7 +7,7 @@ require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 const app = express();
 app.use(cors());
 app.use(express.json());
-
+const PORT = process.env.PORT || 3000;
 const DATABASE_URL = process.env.DATABASE_URL || 'mysql://root:ySbSyJVQXxVSqQPHlSuXPpbUjohSpPtd@centerbeam.proxy.rlwy.net:53126/railway';
 
 const url = new URL(DATABASE_URL);
