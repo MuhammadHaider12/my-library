@@ -119,6 +119,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        const API_BASE = 'https://my-library-production.up.railway.app';
           async function loadIssuedBooks() {
               const studentId = sessionStorage.getItem('studentId') || localStorage.getItem('studentId');
 
@@ -130,7 +131,7 @@
             document.getElementById("studentIdDisplay").innerText = studentId;
             
             try {
-                const res = await fetch(`http://localhost:3000/student/${studentId}/issued-books`);
+                const res = await fetch(`${API_BASE}/student/${studentId}/issued-books`);
                 if (!res.ok) {
                     console.error('Error response:', res.status);
                     throw new Error(`HTTP error! status: ${res.status}`);
@@ -192,7 +193,7 @@
             if (!studentId) return;
             
             try {
-                const res = await fetch(`http://localhost:3000/student/${studentId}/issued-books-history`);
+                const res = await fetch(`${API_BASE}/student/${studentId}/issued-books-history`);
                 if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
                 
                 const history = await res.json();
@@ -229,7 +230,7 @@
             
             try {
                 // First, fetch the current issued book to check daysLeft
-                const res = await fetch(`http://localhost:3000/student/${studentId}/issued-books`);
+                const res = await fetch(`${API_BASE}/student/${studentId}/issued-books`);
                 const data = await res.json();
                 
                 const currentBook = data.currentlyIssued.find(b => b.issue_id == issueId);
@@ -248,7 +249,7 @@
                 // Show confirmation with days remaining info
                 if (confirm(`Request renewal for "${currentBook.title}"?\nDays remaining: ${currentBook.daysLeft}\n\nYour request will be sent to the admin for approval based on book availability.`)) {
                     // Send renewal request to backend
-                    const renewRes = await fetch(`http://localhost:3000/student/${studentId}/request-renewal`, {
+                    const renewRes = await fetch(`${API_BASE}/student/${studentId}/request-renewal`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ issue_id: issueId })

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE = 'http://localhost:3000'; // change if backend URL changes
+   const API_BASE = 'https://my-library-production.up.railway.app'; // change if backend URL changes
 
     // Protect admin dashboard: require login
     const adminUsername = sessionStorage.getItem('adminUsername') || localStorage.getItem('adminUsername');

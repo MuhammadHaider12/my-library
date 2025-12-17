@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const registrationForm = document.getElementById('registrationForm');
     const enrollmentYearInput = document.getElementById('enrollmentYear');
 
-    const API_BASE = 'http://localhost:3000'; // Change this if your backend URL changes in production
+    const API_BASE = 'https://my-library-production.up.railway.app'; // Change this if your backend URL changes in production
 
     // Pre-fill enrollment year
     if (enrollmentYearInput) {

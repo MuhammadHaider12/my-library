@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
     if (!loginForm) return;
 
-    const API_BASE = 'http://localhost:3000'; // Change this if your backend URL changes in production
+    const API_BASE = 'https://my-library-production.up.railway.app'; // Change this if your backend URL changes in production
 
     loginForm.addEventListener('submit', async function (e) {
         e.preventDefault();

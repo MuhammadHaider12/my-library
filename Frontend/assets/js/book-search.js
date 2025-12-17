@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE = 'http://localhost:3000'; // adjust if backend URL changes
+    const API_BASE = 'https://my-library-production.up.railway.app';// adjust if backend URL changes
 
     // Configure navbar depending on whether student or admin is logged in
     const adminUsername = sessionStorage.getItem('adminUsername') || localStorage.getItem('adminUsername');

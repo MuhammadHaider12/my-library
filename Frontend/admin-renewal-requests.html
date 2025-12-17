@@ -119,13 +119,13 @@
     <script>
         let allRequests = [];
         let currentRequestToReject = null;
-
+        const API_BASE = 'https://my-library-production.up.railway.app'; // change if backend URL changes
         async function loadRequests(status = 'pending') {
             const adminUsername = sessionStorage.getItem('adminUsername') || localStorage.getItem('adminUsername');
             document.getElementById('adminUsernameDisplay').innerText = adminUsername;
 
             try {
-                const url = status ? `http://localhost:3000/admin/renewal-requests?status=${status}` : 'http://localhost:3000/admin/renewal-requests';
+                const url = status ? `${API_BASE}/admin/renewal-requests?status=${status}` : `${API_BASE}/admin/renewal-requests`;
                 const res = await fetch(url);
                 const data = await res.json();
 
@@ -217,7 +217,7 @@
 
         async function updateCounts() {
             try {
-                const res = await fetch('http://localhost:3000/admin/renewal-requests');
+                const res = await fetch(`${API_BASE}/admin/renewal-requests`);
                 const data = await res.json();
                 const requests = data.requests || [];
 
@@ -239,7 +239,7 @@
 
             if (confirm('Approve this renewal request? The book due date will be extended by 30 days.')) {
                 try {
-                    const res = await fetch(`http://localhost:3000/admin/renewal-requests/${requestId}`, {
+                    const res = await fetch(`${API_BASE}/admin/renewal-requests/${requestId}`, {
                         method: 'PUT',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -280,7 +280,7 @@
             }
 
             try {
-                const res = await fetch(`http://localhost:3000/admin/renewal-requests/${currentRequestToReject}`, {
+                const res = await fetch(`${API_BASE}/admin/renewal-requests/${currentRequestToReject}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
