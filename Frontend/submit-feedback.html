@@ -167,7 +167,6 @@
                 const subject = document.getElementById('subject').value;
                 const message = document.getElementById('message').value;
                 const rating = document.querySelector('input[name="rating"]:checked').value;
-                // const anonymous = document.getElementById('anonymous').checked;
 
                 if (!feedbackType || !subject || !message) {
                     alert('Please fill in all required fields');
@@ -186,8 +185,7 @@
                             subject: subject,
                             message: message,
                             rating: parseInt(rating),
-                            type: feedbackType,
-                            anonymous: anonymous
+                            type: feedbackType
                         })
                     });
 
