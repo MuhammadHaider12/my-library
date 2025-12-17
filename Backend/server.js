@@ -38,7 +38,7 @@ const bcrypt = require('bcrypt');
 
 // --- Middleware ---
 app.use(cors({
-    origin: '*',
+    origin: 'https://my-library-blush.vercel.app',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
 }));
