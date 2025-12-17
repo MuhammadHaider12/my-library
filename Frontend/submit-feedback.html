@@ -167,7 +167,7 @@
                 const subject = document.getElementById('subject').value;
                 const message = document.getElementById('message').value;
                 const rating = document.querySelector('input[name="rating"]:checked').value;
-                const anonymous = document.getElementById('anonymous').checked;
+                // const anonymous = document.getElementById('anonymous').checked;
 
                 if (!feedbackType || !subject || !message) {
                     alert('Please fill in all required fields');
@@ -212,10 +212,10 @@
             });
         });
 
-        function viewPreviousFeedback() {
-            const studentId = sessionStorage.getItem('studentId') || localStorage.getItem('studentId');
-            alert(`Viewing previous feedback submissions for student ${studentId}...`);
-        }
+        // function viewPreviousFeedback() {
+        //     const studentId = sessionStorage.getItem('studentId') || localStorage.getItem('studentId');
+        //     alert(`Viewing previous feedback submissions for student ${studentId}...`);
+        // }
     </script>
 </body>
 </html>
