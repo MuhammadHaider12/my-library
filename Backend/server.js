@@ -150,7 +150,7 @@ app.post('/register-student', async (req, res) => {
             enrollmentYear ? parseInt(enrollmentYear) : null,
             address ? address.trim() : null,
             username.trim(),
-            hashedPassword
+            hashedPassword.trim();
         ];
 
         console.log("Inserting student data...");

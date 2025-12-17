@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
 
         const username = document.getElementById('adminUsername').value.trim();
-        const password = document.getElementById('adminPassword').value;
+        const password = document.getElementById('adminPassword').value.trim();
 
         if (!username || !password) {
             alert('Please enter both username and password.');
