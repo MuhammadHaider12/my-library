@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tr.innerHTML = `
                     <td>${fine.fine_id}</td>
                     <td>${studentName}</td>
-                    <td>₹${Number(fine.amount).toFixed(2)}</td>
+                    <td>Rs ${Number(fine.amount).toFixed(2)}</td>
                     <td>${fine.description || ''}</td>
                     <td>${fine.date_issued || ''}</td>
                     <td>
