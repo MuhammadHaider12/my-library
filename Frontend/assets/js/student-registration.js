@@ -39,6 +39,16 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        if (!data.studentId || !data.studentId.trim()) {
+            alert('Student ID is required!');
+            return;
+        }
+
+        if (!/^[a-zA-Z0-9]+$/.test(data.studentId.trim())) {
+            alert('Student ID can only contain letters and numbers!');
+            return;
+        }
+
         if (data.password !== data.confirmPassword) {
             alert('Passwords do not match!');
             return;
