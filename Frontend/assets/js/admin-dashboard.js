@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             if (amount > 1000) {
-                alert('Amount cannot exceed ₹1000.');
+                alert('Amount cannot exceed Rs 1000 .');
                 return;
             }
 
@@ -782,7 +782,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="card">
                             <div class="card-body">
                                 <h6 class="card-title">Total Outstanding Fines</h6>
-                                <h3 class="text-danger">₹${Number(report.totalFines).toFixed(2)}</h3>
+                                <h3 class="text-danger">${Number(report.totalFines).toFixed(2)} Pkr</h3>
                             </div>
                         </div>
                     </div>
