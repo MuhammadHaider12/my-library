@@ -19,6 +19,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = Object.fromEntries(formData.entries());
 
         // Client-side validation
+        if (!data.firstName || !data.firstName.trim()) {
+            alert('First name is required!');
+            return;
+        }
+
+        if (!/^[a-zA-Z\s]+$/.test(data.firstName.trim())) {
+            alert('First name can only contain letters and spaces!');
+            return;
+        }
+
+        if (!data.lastName || !data.lastName.trim()) {
+            alert('Last name is required!');
+            return;
+        }
+
+        if (!/^[a-zA-Z\s]+$/.test(data.lastName.trim())) {
+            alert('Last name can only contain letters and spaces!');
+            return;
+        }
+
         if (data.password !== data.confirmPassword) {
             alert('Passwords do not match!');
             return;
